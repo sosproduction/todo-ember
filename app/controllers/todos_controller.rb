@@ -2,7 +2,13 @@ class TodosController < ApplicationController
   respond_to :json
 
   def index
-    respond_with Todo.all
+    #respond_with Todo.all
+    @todo = Todo.all
+
+    respond_to do |format|
+      format.html # index.html.erb
+      format.json { render json: @todo }
+    end
   end
 
   def show

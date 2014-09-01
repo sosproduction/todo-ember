@@ -1,52 +1,90 @@
-<section id="todoapp">
-  <header id="header">
-    <h1>todos</h1>
-    {{input id="new-todo" type="text" value=newTitle action="createTodo" placeholder="What needs to be done?"}}
-  </header>
-  {{#if length}}
-    <section id="main">
-      <ul id="todo-list">
-        {{#each filteredTodos itemController="todo"}}
-          <li {{bind-attr class="isCompleted:completed isEditing:editing"}}>
-            {{#if isEditing}}
-              {{edit-todo class="edit" value=bufferedTitle focus-out="doneEditing" insert-newline="doneEditing" escape-press="cancelEditing"}}
-            {{else}}
-              {{input type="checkbox" class="toggle" checked=isCompleted}}
-              <label {{action "editTodo" on="doubleClick"}}>{{title}}</label>
-              <button {{action "removeTodo"}} class="destroy"></button>
-            {{/if}}
-            </li>
-        {{/each}}
+
+
+
+ <!-- This listing of users will not be necessary on the customer facing site -->
+<!-- Keep this to be a part of the administration panel for the site -->
+<div class="contain-to-grid sticky">  
+    <nav class="top-bar" data-topbar> 
+      <ul class="title-area">
+        <li class="name">
+          <i class="fi-checkbox"></i><h1><a href="#">My Site</a></h1>
+        </li>
+        <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
+        <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
       </ul>
-      {{input type="checkbox" id="toggle-all" checked=allAreDone}}
-    </section>
-    <footer id="footer">
-      <span id="todo-count"><strong>{{remaining.length}}</strong> {{pluralize 'item' remaining.length}} left</span>
-      <ul id="filters">
-        <li>
-          {{#link-to "todos.index" activeClass="selected"}}All{{/link-to}}
-        </li>
-        <li>
-          {{#link-to "todos.active" activeClass="selected"}}Active{{/link-to}}
-        </li>
-        <li>
-          {{#link-to "todos.completed" activeClass="selected"}}Completed{{/link-to}}
-        </li>
-      </ul>
-      {{#if completed.length}}
-        <button id="clear-completed" {{action "clearCompleted"}}>
-          Clear completed ({{completed.length}})
-        </button>
-      {{/if}}
-    </footer>
-  {{/if}}
-</section>
+          <section class="top-bar-section"> <!-- Right Nav Section --> 
+            <ul class="right"> 
+              <li class="has-form"> <a href="<%= new_user_path %>" class="button">Suscribe</a></li>
+              <li class="has-form"> <a href="<%= :login %>" class="button">Sign In</a></li>
+            </ul> 
+
+        <!-- Left Nav Section --> 
+        <ul class="right"> 
+          <li class="divider"></li>
+          <li><a href="#">Product</a></li> 
+          <li class="divider"></li>
+          <li><a href="#">Plans &amp; Pricing</a></li> 
+          <li class="divider"></li>
+          <li><a href="#">Documentation</a></li> 
+          <li class="divider"></li>
+          <li><a href="#">Support</a></li>
+          <li class="divider"></li>
+          <li><a href="#">Contact</a></li> 
+          <li class="divider"></li>
+          <li><a href="#">Company</a></li> 
+          <li class="divider"></li>
+          <li><a href="#">Blog</a></li>  
+        </ul> 
+      </section>
+    </nav>
+  </div>
+
+
+<div id="container">
+  <section id="todoapp">
+    <header id="header">
+      {{input id="new-todo" type="text" value=newTitle action="createTodo" placeholder="What needs to be done?"}}
+    </header>
+    {{#if length}}
+      <section id="main">
+        <ul id="todo-list">
+          {{#each filteredTodos itemController="todo"}}
+            <li {{bind-attr class="isCompleted:completed isEditing:editing"}}>
+              {{#if isEditing}}
+                {{edit-todo class="edit" value=bufferedTitle focus-out="doneEditing" insert-newline="doneEditing" escape-press="cancelEditing"}}
+              {{else}}
+                {{input type="checkbox" class="toggle" checked=isCompleted}}
+                <label {{action "editTodo" on="doubleClick"}}>{{title}}</label>
+                <button {{action "removeTodo"}} class="destroy"></button>
+              {{/if}}
+              </li>
+          {{/each}}
+        </ul>
+        {{input type="checkbox" id="toggle-all" checked=allAreDone}}
+      </section>
+      <footer id="footer">
+        <span id="todo-count"><strong>{{remaining.length}}</strong> {{pluralize 'item' remaining.length}} left</span>
+        <ul id="filters">
+          <li>
+            {{#link-to "todos.index" activeClass="selected"}}All{{/link-to}}
+          </li>
+          <li>
+            {{#link-to "todos.active" activeClass="selected"}}Active{{/link-to}}
+          </li>
+          <li>
+            {{#link-to "todos.completed" activeClass="selected"}}Completed{{/link-to}}
+          </li>
+        </ul>
+        {{#if completed.length}}
+          <button id="clear-completed" {{action "clearCompleted"}}>
+            Clear completed ({{completed.length}})
+          </button>
+        {{/if}}
+      </footer>
+    {{/if}}
+  </section>
+</div>
+
 <footer id="info">
-  <p>Double-click to edit a todo</p>
-  <p>
-    Created by
-    <a href="http://github.com/tomdale">Tom Dale</a>,
-    <a href="http://github.com/addyosmani">Addy Osmani</a>
-  </p>
-  <p>Part of <a href="http://todomvc.com">TodoMVC</a></p>
+  <p>Footer for ToDo App</p>
 </footer>
