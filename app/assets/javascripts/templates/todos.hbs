@@ -7,7 +7,7 @@
     <nav class="top-bar" data-topbar> 
       <ul class="title-area">
         <li class="name">
-          <i class="fi-checkbox"></i><h1><a href="#">My Site</a></h1>
+          <i class="fi-checkbox"></i><h1><a href="#">Sessions</a></h1>
         </li>
         <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
         <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
@@ -43,52 +43,53 @@
     </nav>
   </div>
 
-
 <div class="row">
-  <div class="large-centered">
-    <section id="todoapp">
-      <header id="header">
-        {{input id="new-todo" type="text" value=newTitle action="createTodo" placeholder="What needs to be done?"}}
-      </header>
-      {{#if length}}
-        <section id="main">
-          <ul id="todo-list">
-            {{#each filteredTodos itemController="todo"}}
-              <li {{bind-attr class="isCompleted:completed isEditing:editing"}}>
-                {{#if isEditing}}
-                  {{edit-todo class="edit" value=bufferedTitle focus-out="doneEditing" insert-newline="doneEditing" escape-press="cancelEditing"}}
-                {{else}}
-                  {{input type="checkbox" class="toggle" checked=isCompleted}}
-                  <label {{action "editTodo" on="doubleClick"}}>{{title}}</label>
-                  <button {{action "removeTodo"}} class="destroy"></button>
-                {{/if}}
-                </li>
-            {{/each}}
-          </ul>
-          {{input type="checkbox" id="toggle-all" checked=allAreDone}}
-        </section>
-        <footer id="footer">
-          <span id="todo-count"><strong>{{remaining.length}}</strong> {{pluralize 'item' remaining.length}} left</span>
-          <ul id="filters">
-            <li>
-              {{#link-to "todos.index" activeClass="selected"}}All{{/link-to}}
-            </li>
-            <li>
-              {{#link-to "todos.active" activeClass="selected"}}Active{{/link-to}}
-            </li>
-            <li>
-              {{#link-to "todos.completed" activeClass="selected"}}Completed{{/link-to}}
-            </li>
-          </ul>
-          {{#if completed.length}}
-            <button id="clear-completed" {{action "clearCompleted"}}>
-              Clear completed ({{completed.length}})
-            </button>
-          {{/if}}
-        </footer>
-      {{/if}}
-    </section>
-  </div>
+  <div class="large-3 columns">Project Pane</div>
+    <div class="large-6 columns">
+      <section id="todoapp">
+        <header id="header">
+          {{input id="new-todo" type="text" value=newTitle action="createTodo" placeholder="What needs to be done?"}}
+        </header>
+        {{#if length}}
+          <section id="main">
+            <ul id="todo-list">
+              {{#each filteredTodos itemController="todo"}}
+                <li {{bind-attr class="isCompleted:completed isEditing:editing"}}>
+                  {{#if isEditing}}
+                    {{edit-todo class="edit" value=bufferedTitle focus-out="doneEditing" insert-newline="doneEditing" escape-press="cancelEditing"}}
+                  {{else}}
+                    {{input type="checkbox" class="toggle" checked=isCompleted}}
+                    <label {{action "editTodo" on="doubleClick"}}>{{title}}</label>
+                    <button {{action "removeTodo"}} class="destroy"></button>
+                  {{/if}}
+                  </li>
+              {{/each}}
+            </ul>
+            {{input type="checkbox" id="toggle-all" checked=allAreDone}}
+          </section>
+          <footer id="footer">
+            <span id="todo-count"><strong>{{remaining.length}}</strong> {{pluralize 'item' remaining.length}} left</span>
+            <ul id="filters">
+              <li>
+                {{#link-to "todos.index" activeClass="selected"}}All{{/link-to}}
+              </li>
+              <li>
+                {{#link-to "todos.active" activeClass="selected"}}Active{{/link-to}}
+              </li>
+              <li>
+                {{#link-to "todos.completed" activeClass="selected"}}Completed{{/link-to}}
+              </li>
+            </ul>
+            {{#if completed.length}}
+              <button id="clear-completed" {{action "clearCompleted"}}>
+                Clear completed ({{completed.length}})
+              </button>
+            {{/if}}
+          </footer>
+        {{/if}}
+      </section>
+    </div>
+    <div class="large-3 columns">Pomodoro Pane</div>
 </div>
 
 <footer id="info">

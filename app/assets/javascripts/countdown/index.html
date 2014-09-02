@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<title>Pomodoro counter for Sessions App</title>
+	<script src="countdown.js" type="text/javascript"></script>
+</head>
+<body style="background-color:#EDEDED">
+
+
+<script type="application/javascript">
+
+function doneHandler(result) {
+	// Initialize the done sound
+	var audioElement = document.createElement('audio');
+  audioElement.setAttribute('src', 'alarm.mp3');
+  audioElement.addEventListener("load", function() {
+            audioElement.play();
+        }, true);
+  audioElement.play();
+}
+
+var myCountdown1 = new Countdown({
+								 	time: 30,	// 25 minute pomodoro is 3600 seconds
+								 	hideLabels: true,
+									width:164, 
+									height:60,  
+									rangeHi:"minute",
+									style:"flip",	
+									onComplete : doneHandler
+									});
+</script>
+
+<!-- Things to implement
+				1.  A way to select pomodoro (25min), short break (5min), and long break (30 min)
+				2.  A way to set your own times for session, short break and long break
+				3.  Autostart short break
+				4.  A graphical way to denote how many pomodoros have been worked through in the session to-do
+				5.  A button or way to "Completely Finish" the Pomodoro To-Do.  This would then update the Don't break the chain
+						Calendar
+				6.  A way to front-load a specified number of pomodoros to work on
+				7.  A way to auto-enable short and long breaks.
+
+
+
+<!-- Initial controls for Pomodoro -->
+<table>
+	<td><button id="18" >Start</button></td>
+  <td><button id="28" >Stop</button></td>
+  <td><button id="38" >Reset</button></td>
+</table>
+
+<!-- First pass at controls for timer module -->
+<table>
+	<tr>
+		<td><input type="checkbox" id="44" checked="yes" >Timer plays click sound</td>
+	</tr>
+	<tr>
+		<td><input type="checkbox" id="45" checked="yes" >Play bell at time end</td>
+	</tr>
+</table>
+
+</body>
+</html>

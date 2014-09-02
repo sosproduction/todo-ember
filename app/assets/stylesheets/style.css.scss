@@ -4,14 +4,53 @@ body {
 	padding: 0;
 }
 
+
+/*  begin Foundation classes */
 i.fi-checkbox {
   color:white;
   font-size:48px;
-  display:block;
-  width: 48px;
-  height: 48px;
-  border: 1px solid white;
+ 	position: absolute;
+ 	top: -16px;
 }
+
+.top-bar .name h1 a {
+    padding: 0 40px;
+}
+
+input#new-todo {
+	height: 5rem !important;
+}
+
+.row {
+	max-width: 100%;
+}
+
+#header:before {
+	background: rgba(0, 0, 0, 0.02) !important;
+	border-bottom: none !important;
+  border-top-left-radius: 1px;
+  border-top-right-radius: 1px;
+  content: "";
+  height: 15px;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: 2;
+}
+
+.large-3 {
+  border: 1px solid red;
+}
+
+.large-6 {
+  border: 1px solid red;
+}
+
+#todoapp { 
+	margin: 0 !important;
+}
+/* end Foundation classes */
 
 button {
 	margin: 0;
